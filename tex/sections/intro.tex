@@ -1,0 +1,28 @@
+\section{Introduction}
+\label{intro}
+
+AI technologies are contributing to a wide range of decision-making processes, from driving a car, cancer diagnosis~\cite{hope,sl} and even providing legal advice~\cite{deeplearning}. 
+Although the level of autonomy for an AI-based solution might be different in each usage scenario, the trend is increasingly towards human-independent, algorithmic decision-making. 
+%For example, in driver-less cars all decisions are made by AI and the algorithms take complete control of the cars, whereas in medical diagnosis and intervention or legal aid, the AI systems recommend the best course of action to a health practitioner or the legal team, respectively. In both cases, the human decision making processes are highly influenced by the automated decisions made by AI-based systems. 
+Since machine learning (ML) algorithms are at the core of AI systems, in such scenarios, a significant challenge is answering the question of how much trust we can put into the outcome of the ML model. An important factor contributing to the trustworthiness of ML models is uncertainty associated with input data. This uncertainty can be originated from the intrinsic properties of available data (e.g., missing data, imbalanced data, skewness) or even a subjective opinion expressed by a modeler. In either case, the trust question can be answered only if the modeler is able to take into account the opinion about the data in the training phase of an ML model and report the outcome of the model not only in terms of the model performance but also, in terms of the trustworthiness of the model.
+
+In this paper, we propose a method of quantifying and propagating input data opinions throughout the training phase of a deep neural network. As of the state-of-the-art opinion propagation model proposed in~\cite{hope}, we are also inspired by the probabilistic logic framework defined as Subjective Logic (SL)~\cite{sl}. We first investigate the limitation of the opinion quantification and propagation method proposed in~\cite{sl}. We introduce the concept of \emph{interpretable opinions} that allows to capture the intrinsic statistical properties of input data as opinion determinants. To initialize input data opinions, we partition input data into numerical and categorical features and use statistical properties such as skewness and kurtosis. Then we extended the propagation method to be aligned with the newly introduced interpretable opinions. Moreover, we identified a shortcoming in the current method when computing the error opinion, the difference between predicted and actual outcomes (the error) of the DNN model is compared with a single threshold to form the error opinion missing to take into account uncertain evidence about the error. 
+%while the This comparison yields to identify positive or neg an  ative evidence to form an error opinion.By Using the interpretable opinions, we   
+%of  darta  and then t_method that quantifies the trustworthiness and total model opinion of a DNN using subjective logic. 
+%{\color{blue}Moreover, the current method compare the the difference of predicted and actual outcome of the DNN model with a single threshold. This comparison yields to identify positive or negative evidence to form an error opinion.} 
+%Then, we address the limitations of the current method in Section~\ref{limit}. 
+%In our proposal We overcome these limitations by proposing a new method to incorporate input data opinion originated in statistical intrinsic properties of input data in opinion propagation method. Input data features are partitioned into numerical and categorical features, and target labels to be initialized by different interpretable statistical factors. 
+%Finally, we evaluate our proposed method to investigate the impact of statistical properties of input data on the trustworthiness and total opinion of the DNN model. 
+The experimental evaluation of the proposed method demonstrates that during the training process, the trustworthiness of the model is improving while the uncertainty is decreasing according to the different data opinion initialization factors.
+
+We are making the following contributions: 1) we demonstrate the limitations of the current trust quantification model, 
+%investigate the impact of intrinsic properties of input data such as mini-batch data like skewness on the model performance to quantify training data opinions. 
+2) we extend the state-of-the-art propagation model to take into account input data opinions determinants (i.e., belief, disbelief, and uncertainty) and also enhance the opinion optimization process by incorporating uncertain evidence, and 3) we conduct an extensive experiment using real-world datasets, to demonstrate the effectiveness of our approach.  
+
+%demonstrate that the impact of intrinsic properties of input data on the model performance and then show the reliability of the measured trustworthiness of a DNN using our proposed method. 
+%Second We incorporate these distributional metrics based on the distributions of mini-batches of training data.
+%{\color{blue} We enhance the optimization process by considering uncertain evidence, i.e. not necessarily positive or negative evidence, in model predictive outputs.}
+
+
+
+

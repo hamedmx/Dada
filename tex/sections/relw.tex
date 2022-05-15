@@ -1,0 +1,41 @@
+\section{Related Work}
+\label{relw}
+There are several uncertainty quantification approaches in deep learning that intend to quantify the concept of trust or uncertainty in neural networks. Bayesian DNNs that learn weights' distribution, are the state-of-the-art techniques for predictive uncertainty estimation~\cite{uncer1,dropout,ensemble,uncer_baseline,clara}. The Bayesian DNNs are computationally expensive compared to non-Bayesian (standard) DNNs. 
+% CLARA is a framework developed by Facebook using Bayesian probabilistic model to aggregate reviewer decisions and predicted labels to measure uncertainty~\cite{clara}. 
+In addition, there is no method proposed in these studies to measure the trustworthiness of parties which is vital in consensus tasks. In regular DNNs, there are some methods for quantifying trust in the learning models. For instance, in~\cite{break}, the authors introduce a new trust quantification approach based on a descriptive matrix called Trust Matrix as a complement to their previous work~\cite{wong1} and~\cite{wong2}. However, in case of low confidence and incorrect prediction, a substantial trust value can be seen which is not convincing, and the remedy suggested for this issue can cause more cost and complexity for the whole system. Subjective logic is also another approach used by~\cite{reput_uncer,uncer2,uncer3} to consider second-order uncertainty and trustworthiness in their learning systems. A closely related work is a proposal by Cheng et al.~\cite{hope} that exploits Subjective Logic~\cite{sl} to produce subjective opinions of a DNN to quantify trust in multi-layer neural networks. They introduce a quantification method named DeepTrust, as a framework based on Subjective Logic in which the model opinion and trustworthiness are quantified. Our proposal can be considered as an extension of the work of~\cite{hope} where we studied the limitations of the current method (see Section~\ref{limit}) and extended the method to incorporate interpretable input data opinions.  
+%to be propagated in a DNN model to quantify model trustworthiness. 
+
+
+% They showed that the consensus achieved by CLARA, is better than using majority voting approach; however, there is no method to measure trustworthiness of parties which is so important in consensus tasks.
+
+
+% By answering a set of predefined questions (input data), Wong et al. provided and introduced some metrics to evaluate the overall amount of trust in DNNs~\cite{wong1}. These questions and answers so as to quantify trustworthiness are based on the behaviors of actors and their amount of confidence when they provide their responses due to being overconfident or conservative since due to related psychological history, the trust is partially associated with the amount of confidence. 
+
+% The default state that they consider for their data is balanced, however, we do not know whether data being balanced or imbalanced has impact on the amount of trust or not which it probably does not have any impact on it. Furthermore, the work in the result section suffers from lack of comparison with any other DNNs or models, and just a row of result information is provided. Moreover, there is a discussion on unfairness between some demographic groups but just based on the their provided diagrams; however, it needs more justification or at least more information about data for their unfairness to be implicated like the scenario in which maybe the number of members in each demographic group vary and are unbalanced relative to each other to give rise to this unfairness.
+
+% There are several research on using decentralized FL to create improved private framework for communicating among clients and models to obtain a general optimized model with respect to an acceptable performance.
+% Recently,~\cite{bellet},~\cite{koloskova}, and~\cite{vanha} are three instances of the most important research work on peer-to-peer FL which they have utilized a fully decentralized SGD framework based on learning personalized models collaboratively with asynchronous clients’ activity. In~\cite{bellet} and~\cite{cyffer}, the goal is to achieve better trade-offs between performance and privacy in decentralized FL by improving scalability across clients or amplifying differential privacy guarantees based on appropriate relaxations of local differential privacy. However, these studies do not propose any trust quantification to measure trustworthiness or any determinants of trust in their networks in neither clients’ view nor communications’ view. Also, they suffer from network constraints and peer-to-peer costly communication limitations which this specific problem is addressed and relatively mitigated in~\cite{leasgd}.
+
+% In~\cite{shrid}, Shridhar et al. tried to estimate uncertainty in form of probability distribution using Bayesian neural network as well as being more robust to overfitting. Nevertheless, regarding probabilistic reasoning, there is a need on how the uncertainty can be decreased to allow the decisions made by the network to be more confident and deterministic by growing in data size~\cite{mcadv}. In addition, in~\cite{zante}, the authors learn the similarity graph by connected components over clients as well as personalized model using sparse updates communications. However, robustness to malicious clients or the presence of unreliable data or labels are considered as an important gap. Thus, using some mechanisms incorporating decentralized FL will be a rising prominent goal which is hard to gain without a central trusted server~\cite{mcadv}. In this regard, the questions will be what kind of trusted central authority is required to setup the task in decentralized FL, and how we can determine it.
+
+% Although using Secure Multi-party Communication as well as some state-of-the-art approaches such as secure aggregation and shuffling can be very beneficial to obtain better privacy level and performance trade-off, it is computationally expensive and also, we still need an approach to quantify trust or its determinants in decentralized FL setup to be vigorous enough in detecting or identifying malicious and unreliable clients or in case of any potential collusion~\cite{mcadv}.
+
+
+%'a probabilistic logic description of a DNN by considering trust in both sides of the system, input dataset and inner functional operations. This approach is almost fully dependent on background knowledge of the input dataset like given opinions, trust information, and quality of initial data and labels.
+%%% Our Contribution
+% Therefore, according to the aforementioned gaps, the first part of our contribution is to devise an approach to initialize the input data opinions based on statistical and interpretable properties of training data. This quantification can provide a base infrastructure to quantify generalized trust measurement in decentralized FL based on different human norms of trust.
+%%% Future Contributions %%%
+% Minimizing uncertainty in each training round to reach an acceptable convergence in a decentralized FL system.
+% Further Description: 
+% Maximizing confidence and projected probability (which is a partial representation of trust based on a specific parameter). 
+% Defining and devising a loss function. (bi-level optimization) (refer to non-linear programming: MIT press)
+% This can be just one of the goals which will be the focus of this research and the rest will be considered as future work.
+
+% Quantifying overall trustworthiness (according to its formal definition) in the form of a comprehensive subjective opinion (representation) based on various dependent determinants and human norms like performance, privacy, security, fairness, etc. in a decentralized FL system with respect to the amount of uncertainty.
+% Just a quick mentioning: Using Dirichlet PDF and Multinomial Subjective Logic and investigating the possibility for any potential collusion.
+
+% Detect and identify malicious or unreliable clients in decentralized federated settings based on different human norms. (application)
+% Just a quick mentioning: Using quantified overall trust from previous step.
+
+
+

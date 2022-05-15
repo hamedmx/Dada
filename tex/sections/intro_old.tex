@@ -1,0 +1,268 @@
+\section{Introduction}
+\label{intro}
+
+% Rising and increasing users’ concerns on sharing their personal data, the importance of data privacy, security, and generally, trust in learning systems has been recently emerged. Considering privacy and security certification along with performance (trade-off) is a crucial point in learning systems for applications such as recommendations, advertisements, community detection, marketing, user experience quality for more user absorption, and so forth.
+% A lot of AI-related companies, like Facebook as a social medium, have so much to do with people’s personal data\footnote{\url{https://about.fb.com/news/2021/03/steps-we-take-to-transfer-data-securely/}} in order to train their ML models. For instance, according to the current research in Facebook, security and privacy is a prominent part of keeping the Facebook community safe to support communications and personal information\footnote{\url{https://research.fb.com/category/security-and-privacy/}}.
+% Thus, investigating a certification for the trustworthiness in different learning systems is an important task of which measuring overall trust and quantifying various trust determinants are of priorities as well as performance guarantees.
+
+% Rising and increasing users’ concerns on sharing their personal data, the importance of data privacy, security, and generally, trust in learning systems has been recently emerged. Based on current ML research on privacy-preserving approaches, Federated Learning as a framework for edge computing have gained so much attention regarding more secure communication, and private data storage and sharing. Particularly, a newer version of FL which is decentralized FL, removes the need to a central trusted party or authority to manage learning process in less costly communications and more availability. Therefore, measuring trust in such state-of-the-art systems can facilitate the process of secure learning, increase the reliability of the system, and be considered as a prerequisite for a more secure data communication and sharing among clients~\cite{mcadv}. 
+
+In DNN models, there is a need to measure model uncertainty and trust to quantify the reliability and identify malicious DNN models. 
+% Concerns such as decision on what is the model to be trained, the algorithm, the hyperparameters, and identifying responsible client for aggregation and debugging needs to be addressed in this setting. 
+Therefore, a particular measurement of trust in DNN models is required to answer these concerns. 
+% the decisions are made by the clients who are liable for the learning process, or collaboratively through a consensus scheme~\cite{mcadv}. 
+One of the trust criteria which is not well addressed in deep neural networks is the amount of uncertainty. Uncertainty in ML applications is a first-order uncertainty (Aleatory, Epistemic, or the hybrid version) to quantify a degree of uncertainty~\cite{uncer-rev} which is not expressive and will be applied in some specific circumstances. To be more expressive, there is a need to a second-order uncertainty other than prior uncertainties, to be applied and fused in a higher level in terms of considering other properties. Subjective Logic (SL) is a tool in order to consider second-order probabilities owned by different components of a DNN. 
+
+1) Trust in  
+
+SL is used to quantify Trust in model
+
+{\color{blue}In this research, we build our methodology based on the proposed method by Cheng et al.~\cite{hope} in which the propagation of data opinions through a neural network to achieve total model trustworthiness has been proposed. We improve the existing limitations in this approach: 1) the input data opinions are considered given regardless of intrinsic properties of training data, 2) there is no clarification and detail on the opinion optimization process and only positive and negative evidence are considered in optimization based on a single threshold regardless of considering uncertain observations in model predictions. Therefore, the main contributions in this research are as follows:
+\begin{enumerate}
+    \item We investigate the impact of intrinsic and distributional properties of mini-batch data like skewness on the model performance to quantify training data opinions. 
+    \item We initialize input data opinions determinants (belief, disbelief, and uncertainty) using different and distinct statistical metrics. We incorporate these distributional metrics based on the distributions of mini-batches of training data.
+    \item We enhance the optimization process by considering uncertain evidence, i.e. not necessarily positive or negative evidence, in model predictive outputs.
+\end{enumerate}
+}
+{\color{red}The rest of this paper is organized as follows: Section~\ref{relw} has a brief overview of the related work. Section~\ref{background} and~\ref{method} introduce the preliminaries and the proposed method to quantify input data opinion in a DNN model based on the subjective logic. In Section~\ref{exp}, our experimental results are described. Finally, Section~\ref{conc} presents our conclusions as well as future work.}
+
+% One of the trust criteria (determinants) which is not well addressed in these types of applications is the amount (degree) of uncertainty. 
+% Uncertainty in ML applications is a first-order uncertainty (Aleatory, Epistemic, or the hybrid version) to quantify a degree of uncertainty which is not expressive and will be applied in some particular circumstances~\cite{sl}.
+% To be more expressive, there is a need to a second-order uncertainty other than prior uncertainties, to be applied and fused in a higher level in terms of considering other properties.
+% So far, the amount of uncertainty (lack of confidence on the results provided by clients and the whole system) in FL regarding some determinants like performance is unknown. 
+% Specifically, FL has the lack of analytical inference in trust as a whole or in terms of each trust determinants, particularly in a more robust version which is DFL.
+
+% Leveraging and injecting Subjective Logic in decentralized FL in order to measure trust determinants, e.g. uncertainty in first step of study, with the general aim of quantifying total trustworthiness in a decentralized FL system.
+% So, we are going to address uncertainty as a prominent part of trust quantification in these settings to gain analytical and computational insights of trust in terms of either the whole DFL system or individuals (clients).
+% This second-order uncertainty (uncertainty about probabilities) can be fully addressed in complex CNNs or RNNs via Subjective Logic opinions which is a distribution of a probability distribution.
+% This uncertainty quantification is considered as an add-on component along with federated learning process. So, it will not have any significant additional burden or computational cost.
+
+% Moreover, considering information discount is an important task among nodes in each client’s model and among clients because of the fact that any source cannot be considered as a fully trusted party. So, we will define them as a partially trusted (semi-trusted) party since they are considered as trusted-but-curious sources, and it needs to some degree of information discount while transferring. 
+
+% Furthermore, subjective logic is fully beneficial here because it can act as an add-on in the system by being applied along with the training process in each client and after that in each communication, aggregation, and propagation, So it has no additional computational burden:
+% Using second-order uncertainty used in subjective logic to be propagated through the network in each client while training.
+% Making our clients completely compatible to use CNN or RNN complex models with subjective logic opinions for uncertainty propagation task in each client.
+
+% In addition, using subjective logic is going to be compatible with applying privacy-preserving methods like local differential privacy in client side to protect local data as well as approaches like secure aggregation, shuffling, and secure multi-party computation. It can also be compatible with State-of-the-art methods of communication amongst clients.
+% This optimization (minimization) and quantification of uncertainty in each round is performed along with the actual optimization of an individual and total objective functions of clients and the system, respectively.
+
+% In this section, we presents the methodology and a design procedure of the proposed research. As it has been mentioned in the previous section, the goal of minimizing uncertainty and therefore, maximizing one of the trust determinants like confidence, and also, maximizing other definable trust criteria to be potentially added, require to quantify trust in each group (sub-graph) in a decentralized FL by devising a subjective logic method. In addition to the aforementioned problem, this research is going to compensate and enhance data privacy and system security along with retaining model accuracy by being able to construct a more confident DFL with capability of detecting and identifying unreliable (or malicious) clients (fully or partially) in a group of federated clients in DFL. Furthermore, it can handle the trade-offs among these criteria which are affected by leveraging and injecting the subjective logic approach into federated ML systems.
+
+% The subjective logic is a widely adopted framework of probabilistic reasoning that evaluates trustworthiness or reliability level of different entities. The subjective logic uses the term named “opinion” to denote the representation of a subjective belief through positive, negative, and uncertainty statements~\cite{reputation}, and can also combine and relate different opinions from a large amount of logical operators. In this paper, to obtain more accurate reputation value of worker candidates, every task publisher combines its direct reputation opinions with the indirect reputation opinions to generate compositive reputation values for the candidates.
+
+% Subjective Logic (SL) is a model to utilize probabilistic logic associated with source trust with respect to measuring uncertainty~\cite{sl}. \textit{Subjective Opinions} are the arguments of subjective logic based on logic truth and probabilistic uncertainty, and in this research, we will define and utilize binomial opinions which its aim is to address just a subjective variable, performance, and the amount of opinion factors with respect to this variable in each model for now. We can improve and reinforce our approach by considering more subjective variables in future studies which can lead to a comprehensive method to quantify overall trust regarding various determinants, minimize uncertainty, improve security by detecting malicious clients, measure trust among each pair of clients, and construct a secure platform of clients' collusion in DFL.
+
+% Furthermore, it can achieve a lot of analytical results and inferences to investigating other determinants of trust like fairness in different situations in FL. This analysis can be very beneficial for edge computing research or social media to certify its users’ trust in the system. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% As FL tries to minimize the aggregated overall objective function (loss function) of clients' models which is defined in various comprehensive methods~\cite{bellet}; basically, the summation of the average of achieved models' objective functions in each round of federated training, here, we intend to minimize the aggregated overall uncertainty in our system along with the aforementioned training process without any considerable additional computational burden to maximize the confidence and flowing trust through our federated system based on accuracy and other definable criteria. Therefore, we can leverage this approach to achieve a comprehensive approach to quantify and then enhancing trust in DFL without compromising accuracy and performance.
+
+% As in centralized FL, the main drawback can be single point of failure which is one of the most important issues in centralized settings. Moreover, the server may even become a computational bottleneck when the number of clients is very large~\cite{decentralized} like in real-world scenarios. Also, the server can become vulnerable and error prone in terms of data poisoning, malicious activities, and malfunctioning. Thus, it should be mitigated by careful system design like what was presented in~\cite{scale}. 
+% The key idea of fully decentralized learning is to create peer to peer communications between individual clients unlike with a central server.
+
+% This study will address the concept of uncertainty by a quantitative approach in a federated scenario. This approach will exploit \textit{Decentralized Federated Learning} model (DFL) in which nodes are able to coordinate themselves by local training (local update is typically a stochastic gradient step) to obtain the global model in each training round under secure communications which consists of communicating and then aggregating their local models' parameters with just their selected neighbors (using local clock or calling as a volunteer to participate in training process) in a secure manner with respect to considering data privacy~\cite{adv}. 
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[scale=0.4]{figures/rp.png}
+% 	\caption{An example of decentralized federated settings: The temporary head will be determined and selected to aggregate the updates of the participating models using local differential privacy in each training round $t$ in order to quantify Trust and uncertainty in this settings based on subjective logic.}
+% 	\label{dfl}
+% \end{figure}
+
+% In other words, as you can see in the Fig.~\ref{dfl}, clients perform a local update and exchange information with a subset of their neighbors in the network. The network graph is chosen to be partially sparse with small maximum degree in which each node only needs to transfer model updates with a fraction of peers, and all local individual models converge to a global model which is achieved by gradually reaching consensus on accuracy and confidence (certainty). 
+% Unlike the Centralized Federated Learning, this setting prevents single point failures as the model updates are exchanged only between interconnected batch of clients. It can be interpreted as a decentralized FL model in which selected batch of clients is partitioned into some small batches which each one of them is a Centralized FL model with a client as a \textit{temporary head} to aggregate the models' updates and final opinions of its own batch in the current epoch.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Rising and increasing users’ concerns on sharing their personal data, the importance of data privacy, security, and generally, trust in learning systems has been recently emerged. So, Considering privacy and security certification along with performance (trade-off) is a crucial point in learning systems for applications such as recommendations, advertisements, community detection, marketing, user experience quality for more user absorption, and so forth.
+% A lot of AI-related companies, like Facebook as a social medium, have so much to do with people’s personal data\footnote{\url{https://about.fb.com/news/2021/03/steps-we-take-to-transfer-data-securely/}} in order to train their ML models. For instance, according to the current research in Facebook, security and privacy is a prominent part of keeping the Facebook community safe to support communications and personal information\footnote{\url{https://research.fb.com/category/security-and-privacy/}}.
+% So, investigating a certification for the trustworthiness in different learning systems is an important task of which measuring overall trust and quantifying various trust determinants are of priorities as well as performance guarantees.
+
+% Based on current ML research on privacy-preserving approaches, Federated Learning as a framework for edge computing have gained so much attention regarding more secure communication, and private data storage and sharing to be applied along with data privacy methods like Differential Privacy~\cite{mcadv}.
+% Particularly, a newer version of FL which is decentralized FL removes the need to a central trusted party or authority to manage learning process in less costly communications and more availability.
+% Therefore, measuring trust in such state-of-the-art systems can facilitate the process of secure learning, increase the reliability of the system, and be considered as a prerequisite for a more secure data communication and sharing among clients~\cite{mcadv}. 
+
+% In decentralized FL, there is a need to measure trust in computational nodes (clients) for reliable communication or maybe collusion and detecting and identifying malicious clients (client reliability quantification) so as to quantify and maintain the overall trust of the whole system. 
+% Concerns such as decision on what is the model to be trained, the algorithm, the hyperparameters, and identifying responsible client for aggregation and debugging needs to be addressed in this setting. So, a particular measurement of trust in participating clients is required to answer these concerns and the decisions are made by the clients who are liable for the learning process, or collaboratively through a consensus scheme~\cite{mcadv}.
+
+% One of the trust criteria (determinants) which is not well addressed in these types of applications is the amount (degree) of uncertainty. 
+% Uncertainty in ML applications is a first-order uncertainty (Aleatory, Epistemic, or the hybrid version) to quantify a degree of uncertainty which is not expressive and will be applied in some particular circumstances~\cite{sl}.
+% To be more expressive, there is a need to a second-order uncertainty other than prior uncertainties, to be applied and fused in a higher level in terms of considering other properties.
+% So far, the amount of uncertainty (lack of confidence on the results provided by clients and the whole system) in FL regarding some determinants like performance is unknown. 
+% Specifically, FL has the lack of analytical inference in trust as a whole or in terms of each trust determinants, particularly in a more robust version which is DFL.
+
+% Leveraging and injecting Subjective Logic in decentralized FL in order to measure trust determinants, e.g. uncertainty in first step of study, with the general aim of quantifying total trustworthiness in a decentralized FL system.
+% So, we are going to address uncertainty as a prominent part of trust quantification in these settings to gain analytical and computational insights of trust in terms of either the whole DFL system or individuals (clients).
+% This second-order uncertainty (uncertainty about probabilities) can be fully addressed in complex CNNs or RNNs via Subjective Logic opinions which is a distribution of a probability distribution.
+% This uncertainty quantification is considered as an add-on component along with federated learning process. So, it will not have any significant additional burden or computational cost.
+
+% Moreover, considering information discount is an important task among nodes in each client’s model and among clients because of the fact that any source cannot be considered as a fully trusted party. So, we will define them as a partially trusted (semi-trusted) party since they are considered as trusted-but-curious sources, and it needs to some degree of information discount while transferring. 
+
+% Furthermore, subjective logic is fully beneficial here because it can act as an add-on in the system by being applied along with the training process in each client and after that in each communication, aggregation, and propagation, So it has no additional computational burden:
+% Using second-order uncertainty used in subjective logic to be propagated through the network in each client while training.
+% Making our clients completely compatible to use CNN or RNN complex models with subjective logic opinions for uncertainty propagation task in each client.
+
+% In addition, using subjective logic is going to be compatible with applying privacy-preserving methods like local differential privacy in client side to protect local data as well as approaches like secure aggregation, shuffling, and secure multi-party computation. It can also be compatible with State-of-the-art methods of communication amongst clients.
+% This optimization (minimization) and quantification of uncertainty in each round is performed along with the actual optimization of an individual and total objective functions of clients and the system, respectively.
+
+% The rest of this paper is organized as follows: Section~\ref{related} has a brief overview of the related work. Section~\ref{method} introduces the proposed method to propagate and quantify trust and uncertainty in a neural network model based on subjective logic. In Section~\ref{exp}, our experimental results are described. Finally, Section~\ref{con} presents our conclusions as well as future work.
+
+% % In this section, we presents the methodology and a design procedure of the proposed research. As it has been mentioned in the previous section, the goal of minimizing uncertainty and therefore, maximizing one of the trust determinants like confidence, and also, maximizing other definable trust criteria to be potentially added, require to quantify trust in each group (sub-graph) in a decentralized FL by devising a subjective logic method. In addition to the aforementioned problem, this research is going to compensate and enhance data privacy and system security along with retaining model accuracy by being able to construct a more confident DFL with capability of detecting and identifying unreliable (or malicious) clients (fully or partially) in a group of federated clients in DFL. Furthermore, it can handle the trade-offs among these criteria which are affected by leveraging and injecting the subjective logic approach into federated ML systems.
+
+% % The subjective logic is a widely adopted framework of probabilistic reasoning that evaluates trustworthiness or reliability level of different entities. The subjective logic uses the term named “opinion” to denote the representation of a subjective belief through positive, negative, and uncertainty statements~\cite{reputation}, and can also combine and relate different opinions from a large amount of logical operators. In this paper, to obtain more accurate reputation value of worker candidates, every task publisher combines its direct reputation opinions with the indirect reputation opinions to generate compositive reputation values for the candidates.
+
+% Subjective Logic (SL) is a model to utilize probabilistic logic associated with source trust with respect to measuring uncertainty~\cite{sl}. \textit{Subjective Opinions} are the arguments of subjective logic based on logic truth and probabilistic uncertainty, and in this research, we will define and utilize binomial opinions which its aim is to address just a subjective variable, performance, and the amount of opinion factors with respect to this variable in each model for now. We can improve and reinforce our approach by considering more subjective variables in future studies which can lead to a comprehensive method to quantify overall trust regarding various determinants, minimize uncertainty, improve security by detecting malicious clients, measure trust among each pair of clients, and construct a secure platform of clients' collusion in DFL.
+
+% Furthermore, it can achieve a lot of analytical results and inferences to investigating other determinants of trust like fairness in different situations in FL. This analysis can be very beneficial for edge computing research or social media to certify its users’ trust in the system. 
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % As FL tries to minimize the aggregated overall objective function (loss function) of clients' models which is defined in various comprehensive methods~\cite{bellet}; basically, the summation of the average of achieved models' objective functions in each round of federated training, here, we intend to minimize the aggregated overall uncertainty in our system along with the aforementioned training process without any considerable additional computational burden to maximize the confidence and flowing trust through our federated system based on accuracy and other definable criteria. Therefore, we can leverage this approach to achieve a comprehensive approach to quantify and then enhancing trust in DFL without compromising accuracy and performance.
+
+% As in centralized FL, the main drawback can be single point of failure which is one of the most important issues in centralized settings. Moreover, the server may even become a computational bottleneck when the number of clients is very large~\cite{decentralized} like in real-world scenarios. Also, the server can become vulnerable and error prone in terms of data poisoning, malicious activities, and malfunctioning. Thus, it should be mitigated by careful system design like what was presented in~\cite{scale}. 
+% The key idea of fully decentralized learning is to create peer to peer communications between individual clients unlike with a central server.
+
+% This study will address the concept of uncertainty by a quantitative approach in a federated scenario. This approach will exploit \textit{Decentralized Federated Learning} model (DFL) in which nodes are able to coordinate themselves by local training (local update is typically a stochastic gradient step) to obtain the global model in each training round under secure communications which consists of communicating and then aggregating their local models' parameters with just their selected neighbors (using local clock or calling as a volunteer to participate in training process) in a secure manner with respect to considering data privacy~\cite{adv}. 
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[scale=0.4]{figures/rp.png}
+% 	\caption{An example of decentralized federated settings: The temporary head will be determined and selected to aggregate the updates of the participating models using local differential privacy in each training round $t$ in order to quantify Trust and uncertainty in this settings based on subjective logic.}
+% 	\label{dfl}
+% \end{figure}
+
+% In other words, as you can see in the Fig.~\ref{dfl}, clients perform a local update and exchange information with a subset of their neighbors in the network. The network graph is chosen to be partially sparse with small maximum degree in which each node only needs to transfer model updates with a fraction of peers, and all local individual models converge to a global model which is achieved by gradually reaching consensus on accuracy and confidence (certainty). 
+% Unlike the Centralized Federated Learning, this setting prevents single point failures as the model updates are exchanged only between interconnected batch of clients. It can be interpreted as a decentralized FL model in which selected batch of clients is partitioned into some small batches which each one of them is a Centralized FL model with a client as a \textit{temporary head} to aggregate the models' updates and final opinions of its own batch in the current epoch.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% In recent years, there were some new approaches in deep learning area that tried to quantify the concept of trust generally, or address a prominent determinant of trust to be quantified and then interpreted as trust in neural networks.  
+
+% By answering a set of predefined questions (input data), Wong et al. provided and introduced some metrics to evaluate the overall amount of trust in DNNs~\cite{wong1}. These questions and answers so as to quantify trustworthiness are based on the behaviors of actors and their amount of confidence when they provide their responses due to being overconfident or conservative since due to related psychological history, the trust is partially associated with the amount of confidence. 
+
+% In addition, they also introduce the concepts of trust density and trust spectrum to investigate the distribution of trust upon individual specific answer and represent the total trustworthiness due to the spectrum of possible correct or incorrect answers to the questions, respectively. Eventually, they calculate a scalar number called NetTrustScore, to indicate the total trust in the system. As an assessment, they quantify the trust of some well-known DNNs for image classification using these metrics to explore the possibility of trust being broken down in a system.
+
+% It seems that the two criteria for devising a trust metric which are stated here, simple to compute and being interpretable, are good but not adequate to devise an important metric which is completely dependent on users and data policies. Also, the two essential questions regarding being overconfident and overcautious should not be considered the same, i.e. with the same priority or weight since they have different impact on the trustworthiness of the entire system.
+
+% Furthermore, their result as the overall trustworthiness of a DNN model is a scalar, however, it has probably lack of granularity and details and primarily, it may be for the definition of question-answer trust only based on one criterion which is confidence since there are a few prominent criteria in this regard. So, the overall trust can be resulted as a matrix (vector of several features) or tensor. Another major concern is that confidence is considered here as a result of softmax function and this question comes up that is there any other measurement for confidence which is more convincing and justifiable rather than softmax layer values. Also, this quantification is for post-training process, so it is not optimized during training. Moreover, the authors did not provide an explanation on when do overconfident and overcautious phenomena happen? What is the threshold to determine extra confidence? Lastly, they considered their experiments based on iid data and it may cause the lack of generality in devising a new trust quantification approach.
+
+% Again in~\cite{break}, Hryniowski et al. introduced and defined a descriptive matrix called Trust Matrix, as a new trust quantification approach which is actually an improvement or a complement of their previous work regarding this problem~\cite{wong1} using a set of questions as input data. In this trust matrix, the value of question-answer trust based on pairs of actor-oracle answer scenario is demonstrated in order to be able to rapidly locate the low trust and high trust areas for further investigations or potential improvements in trust measure of a deep neural network. Simplicity in computation and interpretability are the main factors of devising this trust matrix. 
+
+% In addition, they claim that they are the first to study trust at the actor-oracle (prediction-actual) answer level. Moreover, this work utilizes a developed version of trust densities with respect to their conditional trust densities. Finally, they have performed some experiments using their defined trust matrices to assess some well-known DNNs with various architectures. Their results indicates that trust matrix and densities can be fruitful when are used along with trust quantification metrics to be applicable or able to be certified in related DNN solutions.
+
+% Paying attention to insights and thoughts on this study, in case of low confidence and incorrect answer (prediction), strong trust value can be seen which is not convincing and it needs to be rectified in the algorithm or approach. They have suggested a remedy for this issue by using another (secondary) classifier, however, it can cause higher cost and complexity for the whole system. 
+
+% In addition, Wong et al.~\cite{wong2} have tried to investigate the possibility of using a multi-scale trust quantification method to explore the fairness in financial deep learning models with respect to different scales in various scenarios. They utilized multi-scale trust quantification in order to make credit card default predictions. Their main contribution is to study and calculate the total trustworthiness of a DNN model as well as investigating the trust level under all possible relationships among pairs of prediction and actual values. Furthermore, they studied the trust level in shape of a spectrum of possible predictions, and also, based on different demographic groups (like gender, age, and so on). In addition, they considered the distribution of overall trust for a single prediction. Their results indicated that their multi-scale trust quantification approach can be beneficial in financial-based DNNs, partially in the verification and certification so as to study the amount of fairness and trust of these solution models.
+
+% Although the performance and accuracy is not important for the authors in this paper (as they have stated), they utilized Adam optimizer for their DNN which is one of the best DNN optimizers but not the best one, so they could investigate more on state-of-the-art optimizers to select a better and newer optimizer to potentially achieve better results in terms of performance. In fact, based on interpretation of outputs and logits of DNN to be used as a measure of confidence or uncertainty in these approaches, it would be better to pay more attention to accuracy and performance of the model along with trustworthiness since it seems they are somehow dependent and related to each other. 
+
+% They also provide a reasoning to locate where trust and specially fairness breaks down, but they did not provide a remedy or improvement to tackle this problem. In addition, the reason why they calculate the trust on the model after only 20 epochs and not after convergence, is unknown. The default state that they consider for their data is balanced, however, we do not know whether data being balanced or imbalanced has impact on the amount of trust or not which it probably does not have any impact on it. Furthermore, the work in the result section suffers from lack of comparison with any other DNNs or models, and just a row of result information is provided. Moreover, there is a discussion on unfairness between some demographic groups but just based on the their provided diagrams; however, it needs more justification or at least more information about data for their unfairness to be implicated like the scenario in which maybe the number of members in each demographic group vary and are unbalanced relative to each other to give rise to this unfairness.
+
+% As a study related to trust and uncertainty in a big company, CLARA is a current research in Facebook which is a developed and deployed system based on Bayesian probabilistic model to aggregate reviewer decisions and predicted labels to measure uncertainty in them in order to fight online abuse~\cite{clara}. They showed that the consensus achieved by their developed Facebook production based on Bayesian probabilistic model, CLARA, is better than using majority voting approach; however, there is no method to measure trustworthiness of parties which is so important in consensus tasks.
+
+% There are several research on using decentralized FL to create improved private framework for communicating among clients and models to obtain a general optimized model with respect to an acceptable performance.
+% Recently,~\cite{bellet},~\cite{koloskova}, and~\cite{vanha} are three instances of the most important research work on peer-to-peer FL which they have utilized a fully decentralized SGD framework based on learning personalized models collaboratively with asynchronous clients’ activity (independency). Some of these proposals are concentrated to improve scalability by smoothing parameters across clients over non-iid data but similar tasks or data distribution using local differential privacy~\cite{bellet}. 
+
+% In~\cite{cyffer}, the goal is to achieve better trade-offs between performance and privacy in fully decentralized FL by amplifying differential privacy guarantees based on appropriate relaxations of local differential privacy.
+% However, these studies do not propose any trust quantification to measure trustworthiness or any determinants of trust in their networks in neither clients’ view nor communications’ view. Also, they suffer from network constraints and peer-to-peer costly communication limitations which this specific problem is addressed and relatively mitigated in~\cite{leasgd}.
+
+% Also, in~\cite{shrid}, Shridhar et al. tried to estimate uncertainty in form of probability distribution using Bayesian neural network as well as being more robust to overfitting.
+% Nevertheless, regarding probabilistic reasoning, there is a need on how the uncertainty can be decreased to allow the decisions made by the network to be more confident and deterministic by growing in data size~\cite{mcadv}.
+
+% In some kinds of research like~\cite{zante}, the authors learn the similarity graph by connected components over clients as well as personalized model using sparse updates communications.
+% However, in these approaches, robustness to malicious clients or the presence of unreliable data or labels are considered as an important gap. So, using some mechanisms incorporating decentralized FL will be a rising prominent goal which is hard to gain without a central trusted server~\cite{mcadv}. In this regard, the questions will be what kind of trusted central authority is required to setup the task in decentralized FL, and how we can determine it.
+
+% Although using Secure Multi-party Communication as well as some state-of-the-art approaches such as secure aggregation and shuffling can be very beneficial to obtain better privacy level and performance trade-off, it is computationally expensive and also, we still need an approach to quantify trust or its determinants in decentralized FL setup to be vigorous enough in detecting or identifying malicious and unreliable clients or in case of any potential collusion~\cite{mcadv}.
+
+% As a building block of our proposal, there is a research~\cite{hope} in which Cheng et al. exploited Subjective Logic~\cite{sl} to produce subjective and meaningful opinions of data points to quantify trust in multi-layer neural networks. 
+
+% In order to quantify the amount of trustworthiness of a deep neural network with respect to data challenges like noisy or misleading data, Cheng et al. introduced a quantification method named DeepTrust, as a framework based on Subjective Logic (SL) in which they exploit a probabilistic logic description of a DNN by considering the amount of trust in both sides of the system, input dataset and inner functional operations. Their approach can distinguish a multi-layer neural network with higher projected trust probability as a trust measure regarding network topologies even in case of being trained with untrustworthy data. 
+
+% They demonstrate that opinions with high degree of disbelief value can be much more harmful rather than opinions with an amount of uncertainty in neural network assessment in terms of opinion and trust. Moreover, they claim that accuracy of a DNN model can be totally independent from trust probabilities. Using this approach, they can identify overconfident outputs generated by neural network in the presence of corrupted or noisy data.
+% They indicated that using these opinions, the second-order uncertainty which is an expressive uncertainty defined in subjective logic, can be fully propagated through layers and hidden nodes to be extracted from output layer as a trust measurement.
+
+% As it is indicated by authors, this approach is almost fully dependent on background knowledge of the input dataset like given opinions, trust information, and quality of initial data and labels. Furthermore, the definition of trust here is not adequate to be comprehensive and thorough to cover main aspects of trust in learning process.
+% Although this approach will be a base work for our research and utilized to achieve clients’ total opinions in order to quantify uncertainty in decentralized FL, this method suffers from some limitations like not being compatible with complex practical neural networks such as RNN and CNN. 
+% Furthermore, the definition of trust in this work is inadequate. In fact, it is only dependent on uncertainty which is just a prominent determinant in trust quantification.
+% Moreover, there is no enough description on how can an agent discount the information from an untrusted (partially trusted) source. there are some initial constraints like nodes’ full trust in each other which can be considered unrealistic. So, there will be a need to a more complete approach including information discount among nodes from an untrusted (or semi-trusted) source.
+
+% %%% Our Contribution
+% Therefore, according to the aforementioned gaps in this realm of research, the first level of our contribution will be quantifying uncertainty as one of the most prominent determinants of trust in a decentralized FL system.
+% This quantification can provide a base infrastructure to quantify generalized and more comprehensive trust measurement in decentralized FL using uncertainty quantification and optimization based on different human norms of trust which are more than a parameter (human norm or trust determinant).
+
+%%% Future Contributions %%%
+% Minimizing uncertainty in each training round to reach an acceptable convergence in a decentralized FL system.
+% Further Description: 
+% Maximizing confidence and projected probability (which is a partial representation of trust based on a specific parameter). 
+% Defining and devising a loss function. (bi-level optimization) (refer to non-linear programming: MIT press)
+% This can be just one of the goals which will be the focus of this research and the rest will be considered as future work.
+
+% Quantifying overall trustworthiness (according to its formal definition) in the form of a comprehensive subjective opinion (representation) based on various dependent determinants and human norms like performance, privacy, security, fairness, etc. in a decentralized FL system with respect to the amount of uncertainty.
+% Just a quick mentioning: Using Dirichlet PDF and Multinomial Subjective Logic and investigating the possibility for any potential collusion.
+
+% Detect and identify malicious or unreliable clients in decentralized federated settings based on different human norms. (application)
+% Just a quick mentioning: Using quantified overall trust from previous step.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \begin{align*} % no numbers with starred version
+%   1 + 2 &= 3,\\
+%   1 - 2 &= -1.
+% \end{align*}
+
+% \begin{figure*}
+%     \centering
+%     \begin{tikzpicture}[xscale=1.5]
+%         \coordinate (origin);
+%         \draw[->] (origin) -- +(1cm,0) node[below] {$x$};
+%         \draw[->] (origin) -- +(0,1cm) node[left] {$y$};
+%         \fill[gray] (45:1cm) circle[radius=.2cm];
+%     \end{tikzpicture}
+%     \caption{A Nice Filled Ellipse with a Pair of Coordinate Axes.}\label{fig:tikz}
+% \end{figure*}
+
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.7\linewidth,page=3]{Eindhoven.jpg}
+%   \caption{A View of a Nice City.}
+%   \label{fig:Eindhoven}
+% \end{figure}
+
+% \begin{table}
+%     \centering
+%     \caption{An Interesting Table.}\label{tab:data}
+%     \begin{tabular}{rl}
+%       \toprule % from booktabs package
+%       \bfseries Dataset & \bfseries Result\\
+%       \midrule % from booktabs package
+%       Data1 & 0.12345\\
+%       Data2 & 0.67890\\
+%       Data3 & 0.54321\\
+%       Data4 & 0.09876\\
+%       \bottomrule % from booktabs package
+%     \end{tabular}
+% \end{table}
+
+
+
+
+
+
+
+
+
+
